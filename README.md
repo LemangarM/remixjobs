@@ -1,4 +1,4 @@
-# Remixjobs
+﻿# Remixjobs
 
 > Unofficial Remixjobs API
 
@@ -8,21 +8,14 @@
 
 Today, no (un)official API was developed to allow developers to add jobs in their web application
 
-## Workshop in 1 sentence
-
-*Build a remixjobs RESTful API*
-
-## How to do that?
-
-Transcript the API description in code ;)
-
-The goal is write enough endpoints with the right filters and fields to build a specific job boards as:
-
-* A job board for JavaScript intership
-* A job board for remote jobs on Big Data
-* A job board for Designers who want sunny weather... so in South Of France
-
-Etc, etc, etc...
+## Our Files Structure
+  
+    - app/
+    ----- models/
+    ---------- job.js    // our job model
+    - node_modules/     // created by npm. holds our dependencies/packages
+    - package.json      // define all our node app and dependencies
+    - server.js         // Scraping, configure our application and create routes
 
 ## Stack
 
@@ -30,8 +23,17 @@ Etc, etc, etc...
 * Express 4
 * MongoDB
 * Postman
+* mongoose
+* Cheerio
 
-## Api description
+## How to install our API
+
+* Installing Our Node Packages (command line in the root "npm install")
+* Run mongod at bin mongoDB folder
+* Starting our server. From the command line "node server.js")
+* API run & waiting for a request.
+
+## API description
 
 We could define a job by its
 
@@ -39,10 +41,16 @@ We could define a job by its
 1. Company
 1. Localization
 1. Category
-1. Description
 1. Contract
 1. Date
 1. Tags
+
+## How to use our API
+
+* For Scraping follow this link [http://localhost:8080/scrape](http://localhost:8080/scrape)
+* Then to have the results of your queries, follow this link [http://localhost:8080/api](http://localhost:8080/api)
+
+###with
 
 ### /jobs
 
@@ -51,15 +59,10 @@ We could define a job by its
 * Return information of a job
 * Update a jobs
 
-#### Non exhaustive parameters
 
-parameters | description
----------- | -----------
-q | the query
-contract | filter by contract (cdi, cdd...)
-category | design, dev...
-where | localization
-limit | Jobs number
+### /jobs/job_id
+
+* Return job with this id
 
 ### /jobs/latest
 
@@ -68,25 +71,10 @@ limit | Jobs number
 ### /companies
 
 * Return all companies
-* Return all jobs of a the given companies
 
-## Jobs model
+### /companies?company=name_of_company
 
-I think that the first step is to scrap datas from RemixJobs website and fill a [mongoDB](https://www.mongodb.org/) database.
-
-Once database filled, your api will fetch/save/update data from this database in a real API consuming.
-
-
-## API rules (at least to follow)
-
-1. RESTful URLs and actions
-1. Plural noun
-1. Version via the url
-1. Query parameters for advanced filtering, sorting and searching
-1. Limit fields are returned from the APO
-1. JSON only
-1. snake_case for resources
-1. Use HTTP Status codes
+* Return all jobs of a this company
 
 ## Licence
 
